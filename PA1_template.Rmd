@@ -24,6 +24,10 @@ invisible(lapply(pkgs, library, character.only = TRUE))
 
 ## Loading and Preprocessing the data.
 ```{r load-data}
+# Unzip data if needed -----------------------------------------------------
+if (!file.exists("activity.csv")) {
+  unzip("activity.zip")
+
 # Load & inspect the data --------------------------------------------------
 activity <- read_csv("activity.csv",
                      col_types = cols(
