@@ -24,17 +24,16 @@ invisible(lapply(pkgs, library, character.only = TRUE))
 
 ## Loading and Preprocessing the data.
 ```{r load-data}
-# Unzip data if needed -----------------------------------------------------
-if (!file.exists("activity.csv")) {
-  unzip("activity.zip")
+unzip("activity.zip")
 
-# Load & inspect the data --------------------------------------------------
-activity <- read_csv("activity.csv",
-                     col_types = cols(
-                       steps    = col_double(),
-                       date     = col_date(format = "%Y-%m-%d"),
-                       interval = col_integer()
-                     ))
+activity <- readr::read_csv(
+  "activity.csv",
+  col_types = readr::cols(
+    steps    = readr::col_double(),
+    date     = readr::col_date(format = "%Y-%m-%d"),
+    interval = readr::col_integer()
+  )
+)
 
 # Quick glance at structure
 glimpse(activity)
